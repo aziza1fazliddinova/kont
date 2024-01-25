@@ -23,18 +23,19 @@ const movieDB = {
         "Скотт Пилигрим против..."
     ]
 }
-for (let movie of movieDB.movies) {
-    let idx = movieDB.movies.indexOf(movie) + 1
-    let promo_interactive = document.querySelector('.promo__interactive-list')
+
+for(let item of movieDB.movies) {
     let li = document.createElement('li')
+    let div = document.createElement('div')
+    
+    li.classList.add('promo__interactive-item')
+    div.classList.add('delete')
+    li.innerHTML = item
 
-    li.style.fontSize = "25px"
-    li.style.textDecoration = "underline orange"
-    li.innerHTML = idx + '. ' + movie
+    li.append(div)
+    ul.append(li)
 
-    promo_interactive.append(li)
 }
-
 
 let right = document.querySelectorAll('.promo__adv img');
 right.forEach((item) => {
