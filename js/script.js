@@ -464,7 +464,10 @@ const movieDB = {
 
 const ul = document.querySelector('.promo__interactive-list')
 const promoBG = document.querySelector('.promo__bg')
-
+let title = document.querySelector('.promo__title')
+let genre = document.querySelector('.promo__genre')
+let plot = document.querySelector('.promo__descr')
+let ratings = document.querySelector('.promo__ratings')
 function reload() {
     ul.innerHTML = ''
 
@@ -490,6 +493,17 @@ function reload() {
 
         li.onclick = () => {
             promoBG.style.background = `url(${item.Poster}) center center/cover no-repeat`
+            title.innerHTML = item.Title
+            genre.innerHTML = item.Genre
+            plot.innerHTML = item.Plot
+
+            ratings.innerHTML = "";
+
+
+            item.Ratings.forEach(rating => {
+                ratings.innerHTML += `<p>${rating.Source}. ${rating.Value}</p>`
+                ratings.style.color = 'orange'
+            });
         }
     }
 }
